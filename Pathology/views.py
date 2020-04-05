@@ -86,7 +86,7 @@ def image_upload_wr(request, test_name):
 
             request.session['test_name'] = test_name
             request.session['result'] = output[1]
-            request.session['confidence'] = output[2]
+            request.session['confidence'] = round(output[2], 2)
 
             AI_Usecase_Occurences.objects.create(time=datetime.now(), Image_Output_1=output[1], confidence=round(output[2], 2), heatmap=name)
         return HttpResponseRedirect('/report_wr/')
